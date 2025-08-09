@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://soap.xml"
+        targetNamespace="http://soap.xml"
+        elementFormDefault="qualified"
+>
+
+    <!-- Definition of element "station" -->
+    <xs:element name="GetInfraRequest">
+        <xs:complexType>
+            <xs:sequence>
+
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Definition of the Complex Type for Dock -->
+    <xs:complexType name="LocalType">
+        <xs:sequence>
+            <!-- id of dock -->
+            <xs:element name="idLocal" type="xs:long" />
+            <!-- name of dock -->
+            <xs:element name="nome" type="xs:string" />
+            <!-- state of dock -->
+            <xs:element name="latitude" type="xs:float" />
+            <!-- state of dock -->
+            <xs:element name="longitude" type="xs:float" />
+            <!-- dock info of connection with beacon -->
+            <xs:element name="raio" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Definition request AddDock method -->
+    <xs:element name="AddLocalRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- state of dock -->
+                <xs:element name="local" type="tns:LocalType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Definition response AddDock method -->
+    <xs:element name="AddLocalResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- id of dock -->
+                <xs:element name="state" type="xs:boolean" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Definition request deleteDock method -->
+    <xs:element name="DeleteLocalRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- id of dock -->
+                <xs:element name="latitude" type="xs:float" />
+                <!-- id of dock -->
+                <xs:element name="longitude" type="xs:float" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Definition response deleteDock method -->
+    <xs:element name="DeleteLocalResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- id of dock -->
+                <xs:element name="state" type="xs:boolean" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetInfraResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- retorno da confirmação da inserção -->
+                <xs:element name="estado" type="xs:boolean" />
+                <!-- mensagem do estado -->
+                <xs:element name="mensagem" type="xs:string" />
+                <!-- id -->
+                <xs:element name="id" type="xs:long" />
+                <!-- email -->
+                <xs:element name="name" type="xs:string" />
+                <!-- bonus value of station -->
+                <xs:element name="bonus" type="xs:int" />
+                <!-- quantidade de latitude -->
+                <xs:element name="latitude" type="xs:float" />
+                <!-- quantidade de longitude -->
+                <xs:element name="longitude" type="xs:float" />
+                <!-- quantidade de nome do local -->
+                <xs:element name="raio" type="xs:float" />
+                <!-- conjuntode docas of a station -->
+                <xs:element name="locais" type="tns:LocalType" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
